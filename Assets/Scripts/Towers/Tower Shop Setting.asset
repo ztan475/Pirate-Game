@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8c69ac6b2f90e42bcefb74eb34d15a, type: 3}
+  m_Name: Tower Shop Setting
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 7283257567580379701, guid: f460d44e08e7a5744876b79daf8dd5b9, type: 3}
+  towerCost: 2000
+  towerShopSprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
