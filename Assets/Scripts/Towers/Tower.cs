@@ -7,7 +7,7 @@ public class Tower : MonoBehaviour
     [SerializeField] private TowerStats towerStats;
     [SerializeField] private GameObject projectileSpawnPoint;
     
-    private CircleCollider2D collider2D;
+    private CircleCollider2D towerCollider2D;
     private ArrayList enemyList = new ArrayList();
     private BasicEnemy currentEnemy;
     private bool canShoot;
@@ -15,8 +15,8 @@ public class Tower : MonoBehaviour
 
     private void Start()
     {
-        collider2D = GetComponent<CircleCollider2D>();
-        collider2D.radius = towerStats.range;
+        towerCollider2D = GetComponent<CircleCollider2D>();
+        towerCollider2D.radius = towerStats.range;
         health = towerStats.health;
         canShoot = true;
     }
