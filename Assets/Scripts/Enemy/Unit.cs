@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed = 3f;
+    [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] protected int attack = 10;
     [SerializeField] protected int health = 100;
     [SerializeField] protected float attackSpeed = 1.0f;
     [SerializeField] protected int defense = 0;
-    [SerializeField] protected float range = 2;
+    [SerializeField] protected float range = 0.5f;
 
     protected NavMeshAgent agent;
     protected string targetTag;

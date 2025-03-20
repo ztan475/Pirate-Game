@@ -19,6 +19,7 @@ public class PlayerUnit : Unit
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = Quaternion.identity;
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject targetObject = null;
         foreach (GameObject gameObject in gameObjects)
