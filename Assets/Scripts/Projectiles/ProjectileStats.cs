@@ -7,4 +7,7 @@ public class ProjectileStats : ScriptableObject
 {
     public float projectileVelocity;
     public int damage;
+    public GameObject projectileOnHit;
+    public float radius;
+    public LayerMask targetLayer;
 }

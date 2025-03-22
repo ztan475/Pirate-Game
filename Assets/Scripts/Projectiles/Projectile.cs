@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private ProjectileStats projectileStats;
 
-    private float minDistanceToDealDamage = 0.1f;
+    // private float minDistanceToDealDamage = 0.1f;
     private BasicEnemy enemyTarget;
 
     protected virtual void Update()
@@ -27,13 +27,13 @@ public class Projectile : MonoBehaviour
     protected virtual void MoveProjectile()
     {
         transform.position = Vector2.MoveTowards(transform.position, enemyTarget.transform.position, projectileStats.projectileVelocity * Time.deltaTime);
-        float distanceBetweenEnemyTarget = (enemyTarget.transform.position - transform.position).magnitude;
+        /*float distanceBetweenEnemyTarget = (enemyTarget.transform.position - transform.position).magnitude;
         if(distanceBetweenEnemyTarget < minDistanceToDealDamage)
         {
             // Replace with whatever damage script
             enemyTarget.DealDamage(projectileStats.damage);
-            Destroy(gameObject);
-        }
+            Destroy(gameObject);  
+        }*/
     }
 
     private void RotateProjectile()
