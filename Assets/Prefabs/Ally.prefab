@@ -200,4 +200,4 @@ MonoBehaviour:
   attackSpeed: 1
   defense: 0
   range: 0.5
-  attackArea: {fileID: 0}
+  attackArea: {fileID: 4625673485556481858, guid: fb299fa5d8f8f40499d8ecb8b6f21b6d, type: 3}

@@ -37,6 +37,10 @@ public class PlayerUnit : Unit
         {
             Debug.Log("Changing target");
             currentTarget = targetObject;
+        }
+
+        if (targetObject)
+        {
             agent.SetDestination(targetObject.transform.position);
         }
     }
