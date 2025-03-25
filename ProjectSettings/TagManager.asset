@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Node
+  - Ally
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Players
+    uniqueID: 4269336115
+    locked: 0
   - name: Background
     uniqueID: 3624188727
     locked: 0
