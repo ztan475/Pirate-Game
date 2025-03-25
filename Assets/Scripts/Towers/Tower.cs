@@ -9,7 +9,7 @@ public class Tower : MonoBehaviour
     
     private CircleCollider2D towerCollider2D;
     private ArrayList enemyList = new ArrayList();
-    private BasicEnemy currentEnemy;
+    private Unit currentEnemy;
     private bool canShoot;
     private int health;
 
@@ -35,7 +35,7 @@ public class Tower : MonoBehaviour
             currentEnemy = null;
             return;
         }
-        currentEnemy = (BasicEnemy) enemyList[0];
+        currentEnemy = (Unit) enemyList[0];
     }
 
     // Tracks all enemies within range

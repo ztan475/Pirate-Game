@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyUnit : Unit
+public class RangedEnemyUnit : Unit
 {
     private GameObject currentTarget = null;
-    public GameObject attackArea;
+    public GameObject projectile;
     private Coroutine attackCoroutine;
 
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class EnemyUnit : Unit
         agent = GetComponent<NavMeshAgent>();
         targetTag = "Ally";
         BoxCollider2D boxCollider = gameObject.GetComponent<BoxCollider2D>();
-        boxCollider.size = new Vector2(range * 2, range * 2);
+        boxCollider.size = new Vector2(range * 4, range * 4);
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class EnemyUnit : Unit
             currentTarget = targetObject;
         }
 
-        if (targetObject)
+        if (targetObject && attackCoroutine == null)
         {
             agent.SetDestination(targetObject.transform.position);
         }
@@ -51,7 +51,9 @@ public class EnemyUnit : Unit
     {
         if (collision.gameObject.tag == targetTag && attackCoroutine == null)
         {
-            attackCoroutine = StartCoroutine(SummonAttackAreaRepeat());
+            agent.isStopped = true;
+            agent.SetDestination(transform.position);
+            attackCoroutine = StartCoroutine(StartShooting());
         }
     }
 
@@ -61,37 +63,28 @@ public class EnemyUnit : Unit
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
+            agent.isStopped = false;
         }
     }
 
-    IEnumerator SummonAttackAreaRepeat()
+    IEnumerator StartShooting()
     {
         while (true)
         {
-            SummonAttackArea();
+            Shoot();
             yield return new WaitForSeconds(attackSpeed);
         }
     }
 
-    void SummonAttackArea()
+    void Shoot()
     {
-        // Get direction to the target and rotate sprite (rotate 90 degrees for vertical facing sprite rn)
         Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
-        Vector3 rotatedDirection = new Vector3(-directionToTarget.y, directionToTarget.x, 0);
-        Quaternion attackRotation = Quaternion.LookRotation(Vector3.forward, rotatedDirection);
+        Quaternion attackRotation = Quaternion.LookRotation(Vector3.forward, directionToTarget);
 
-        Vector3 spawnPosition = transform.position + directionToTarget * 0.60f;
-        GameObject attack = Instantiate(attackArea, spawnPosition, attackRotation);
+        Vector3 spawnPosition = transform.position + directionToTarget * 0.30f;
+        GameObject attack = Instantiate(projectile, spawnPosition, attackRotation);
 
-        EnemyAttackHitbox enemyAttackHitbox = attack.GetComponent<EnemyAttackHitbox>();
-        List<GameObject> alliesHit = enemyAttackHitbox.unitsHit();
-
-        foreach (GameObject obj in alliesHit)
-        {
-            Unit unit = obj.GetComponent<Unit>();
-            unit.TakeDamage(this);
-        }
-        
-        Destroy(attack, 0.5f);
+        Projectile projectileScript = attack.GetComponent<Projectile>();
+        projectileScript.SetEnemy(currentTarget.GetComponent<Unit>()); 
     }
 }

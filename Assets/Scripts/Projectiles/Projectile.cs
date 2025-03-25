@@ -9,7 +9,20 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileStats projectileStats;
 
     private float minDistanceToDealDamage = 0.1f;
-    private BasicEnemy enemyTarget;
+    private Unit enemyTarget;
+    private BoxCollider2D boxCollider;
+
+    protected virtual void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+
+        // Set collider to size of sprite
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && boxCollider != null)
+        {
+            boxCollider.size = spriteRenderer.bounds.size;
+        }
+    }
 
     protected virtual void Update()
     {
@@ -30,8 +43,7 @@ public class Projectile : MonoBehaviour
         float distanceBetweenEnemyTarget = (enemyTarget.transform.position - transform.position).magnitude;
         if(distanceBetweenEnemyTarget < minDistanceToDealDamage)
         {
-            // Replace with whatever damage script
-            enemyTarget.DealDamage(projectileStats.damage);
+            enemyTarget.TakeDamage(projectileStats.damage);
             Destroy(gameObject);
         }
     }
@@ -43,8 +55,18 @@ public class Projectile : MonoBehaviour
         transform.Rotate(0f,0f,angle);
     }
 
-    public void SetEnemy(BasicEnemy enemy)
+    public void SetEnemy(Unit enemy)
     {
         enemyTarget = enemy;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == enemyTarget.gameObject)
+        {
+            enemyTarget.TakeDamage(projectileStats.damage);
+            
+            Destroy(gameObject);
+        }
     }
 }
