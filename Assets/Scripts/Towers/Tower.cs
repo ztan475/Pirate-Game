@@ -43,7 +43,7 @@ public class Tower : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            BasicEnemy newEnemy = collision.GetComponent<BasicEnemy>();
+            Unit newEnemy = collision.GetComponent<Unit>();
             enemyList.Add(newEnemy);
         }
     }
@@ -52,7 +52,7 @@ public class Tower : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            BasicEnemy enemy = collision.GetComponent<BasicEnemy>();
+            Unit enemy = collision.GetComponent<Unit>();
             if(enemyList.Contains(enemy))
                 enemyList.Remove(enemy);
         }
