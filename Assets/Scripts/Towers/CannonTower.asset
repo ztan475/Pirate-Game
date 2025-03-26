@@ -16,3 +16,11 @@ MonoBehaviour:
   reloadTime: 5
   health: 100
   projectilePrefab: {fileID: 9041874545346865386, guid: e98cbb5584104274da856e38a0b4f8ed, type: 3}
+  projectileDamage: 30
+  sellCost: 300
+  upgradeCost: 100
+  rangeUpgradeIncrement: 0
+  reloadTimeUpgradeIncrement: 0
+  healthUpgradeIncrement: 100
+  damageUpgradeIncrement: 15
+  towerType: 1

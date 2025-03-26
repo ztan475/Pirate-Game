@@ -8,6 +8,5 @@ public class TowerShopSettings : ScriptableObject
 {
     public GameObject towerPrefab;
     public int towerCost;
-    public int sellCost;
     public Sprite towerShopSprite;
 }

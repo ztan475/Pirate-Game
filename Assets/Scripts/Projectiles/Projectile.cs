@@ -10,6 +10,7 @@ public class Projectile : MonoBehaviour
 
     // private float minDistanceToDealDamage = 0.1f;
     private BasicEnemy enemyTarget;
+    private Tower currentTower;
 
     protected virtual void Update()
     {
@@ -27,13 +28,6 @@ public class Projectile : MonoBehaviour
     protected virtual void MoveProjectile()
     {
         transform.position = Vector2.MoveTowards(transform.position, enemyTarget.transform.position, projectileStats.projectileVelocity * Time.deltaTime);
-        /*float distanceBetweenEnemyTarget = (enemyTarget.transform.position - transform.position).magnitude;
-        if(distanceBetweenEnemyTarget < minDistanceToDealDamage)
-        {
-            // Replace with whatever damage script
-            enemyTarget.DealDamage(projectileStats.damage);
-            Destroy(gameObject);  
-        }*/
     }
 
     private void RotateProjectile()
@@ -46,5 +40,15 @@ public class Projectile : MonoBehaviour
     public void SetEnemy(BasicEnemy enemy)
     {
         enemyTarget = enemy;
+    }
+
+    public void SetTower(Tower tower)
+    {
+        currentTower = tower;
+    }
+
+    public Tower GetTower()
+    {
+        return currentTower;
     }
 }

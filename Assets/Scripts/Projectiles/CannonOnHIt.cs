@@ -5,6 +5,7 @@ using UnityEngine;
 public class CannonOnHit : MonoBehaviour
 {
     [SerializeField] private ProjectileStats projectileStats;
+    public int damage;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -22,7 +23,8 @@ public class CannonOnHit : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, projectileStats.radius, projectileStats.targetLayer);
         foreach (Collider2D enemy in enemies)
         {
-            enemy.gameObject.GetComponent<BasicEnemy>().DealDamage(projectileStats.damage);
+            enemy.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
+            Debug.Log(damage);
         }
         Destroy(explosion, 0.1f);
     }

@@ -33,6 +33,7 @@ public class TowerShopCard : MonoBehaviour
             GameObject newTower = Instantiate(towerSettings.towerPrefab, UIManager.Instance.GetCurrentNodePos(), Quaternion.identity);
             CurrencySystem.Instance.RemoveCoins(towerSettings.towerCost);
             UIManager.Instance.GetNode().hasTower = true;
+            UIManager.Instance.GetNode().currentTower = newTower;
         }
         UIManager.Instance.CloseShop();      
     }
