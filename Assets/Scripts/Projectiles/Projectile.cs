@@ -8,6 +8,9 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private ProjectileStats projectileStats;
 
+    // private float minDistanceToDealDamage = 0.1f;
+    private BasicEnemy enemyTarget;
+    private Tower currentTower;
     private float minDistanceToDealDamage = 0.1f;
     private Unit enemyTarget;
     private BoxCollider2D boxCollider;
@@ -60,6 +63,16 @@ public class Projectile : MonoBehaviour
         enemyTarget = enemy;
     }
 
+    public void SetTower(Tower tower)
+    {
+        currentTower = tower;
+    }
+
+    public Tower GetTower()
+    {
+        return currentTower;
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == enemyTarget.gameObject)

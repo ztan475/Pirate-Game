@@ -6,10 +6,15 @@ using UnityEngine.UI;
 public class Node : MonoBehaviour
 {
     public bool hasTower;
+    public GameObject currentTower;
+
+    [SerializeField] private GameObject towerOptionUI;
 
     private void Start()
     {
         hasTower = false;
+        currentTower = null;
+        towerOptionUI.SetActive(false);
     }
 
     public void OpenShop()
@@ -22,8 +27,29 @@ public class Node : MonoBehaviour
         }
         else
         {
-            Debug.Log("Sell or upgrade option");
+            if (towerOptionUI.activeSelf)
+            {
+                towerOptionUI.SetActive(false);
+            }
+            else
+            {
+                towerOptionUI.SetActive(true);
+            }
         }
-        
+    }
+
+    public void UpgradeTower()
+    {
+        currentTower.GetComponent<Tower>().UpgradeTower();
+        towerOptionUI.SetActive(false);
+    }
+
+    public void SellTower()
+    {
+        CurrencySystem.Instance.AddCoins(currentTower.GetComponent<Tower>().sellCost);
+        hasTower = false;
+        Destroy(currentTower);
+        currentTower = null;
+        towerOptionUI.SetActive(false);
     }
 }
