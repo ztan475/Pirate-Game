@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private ProjectileStats projectileStats;
 
     // private float minDistanceToDealDamage = 0.1f;
-    private BasicEnemy enemyTarget;
     private Tower currentTower;
     private float minDistanceToDealDamage = 0.1f;
     private Unit enemyTarget;

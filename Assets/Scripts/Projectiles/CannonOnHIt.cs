@@ -23,7 +23,8 @@ public class CannonOnHit : MonoBehaviour
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, projectileStats.radius, projectileStats.targetLayer);
         foreach (Collider2D enemy in enemies)
         {
-            enemy.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
+            // enemy.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
+            // Add function to Unit.
             Debug.Log(damage);
         }
         Destroy(explosion, 0.1f);

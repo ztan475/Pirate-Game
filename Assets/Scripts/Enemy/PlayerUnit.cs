@@ -43,5 +43,10 @@ public class PlayerUnit : Unit
         {
             agent.SetDestination(targetObject.transform.position);
         }
+        else
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
     }
 }

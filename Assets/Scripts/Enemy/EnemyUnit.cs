@@ -45,6 +45,11 @@ public class EnemyUnit : Unit
         {
             agent.SetDestination(targetObject.transform.position);
         }
+        else
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -10,7 +10,7 @@ public class GooOnHit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
+            // collision.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
             GameObject slowField = Instantiate(projectileStats.projectileOnHit, transform.position, Quaternion.identity);
             Destroy(gameObject, 0.05f);
         }

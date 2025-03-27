@@ -10,7 +10,7 @@ public class ArrowOnHit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
+            // collision.gameObject.GetComponent<BasicEnemy>().DealDamage(damage);
             Destroy(gameObject, 0.05f);
         }
     }
