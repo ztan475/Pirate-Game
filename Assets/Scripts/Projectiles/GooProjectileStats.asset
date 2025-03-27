@@ -10,7 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6ee23878a7564746b00e971290f539a, type: 3}
-  m_Name: MachineGunProjectile
+  m_Name: GooProjectileStats
   m_EditorClassIdentifier: 
-  projectileVelocity: 20
-  damage: 5
+  projectileVelocity: 10
+  damage: 1
+  projectileOnHit: {fileID: 5551169891105254133, guid: 716afee5e9733a3449ea36fe065f8ad2, type: 3}
+  radius: 3
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 64

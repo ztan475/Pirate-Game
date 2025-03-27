@@ -10,9 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15bca4610b157f243a7c85f47ace82ca, type: 3}
-  m_Name: BasicTower
+  m_Name: CannonTower
   m_EditorClassIdentifier: 
   range: 3
   reloadTime: 5
   health: 100
   projectilePrefab: {fileID: 9041874545346865386, guid: e98cbb5584104274da856e38a0b4f8ed, type: 3}
+  projectileDamage: 30
+  sellCost: 300
+  upgradeCost: 100
+  rangeUpgradeIncrement: 0
+  reloadTimeUpgradeIncrement: 0
+  healthUpgradeIncrement: 100
+  damageUpgradeIncrement: 15
+  towerType: 1

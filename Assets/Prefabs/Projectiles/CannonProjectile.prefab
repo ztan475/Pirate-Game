@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.9811321, g: 0.032395888, b: 0.652077, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -94,8 +94,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2308598880333725205}
   - component: {fileID: 2017548653078983394}
+  - component: {fileID: 4097002890032756506}
+  - component: {fileID: -3632015819019983017}
   m_Layer: 0
-  m_Name: MachineGunProjectile
+  m_Name: CannonProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,4 +131,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d519f47e7efb4ff408809de02a1f5074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileStats: {fileID: 11400000, guid: bac172c7ac622c54382e4c5b66f47dc3, type: 2}
+  projectileStats: {fileID: 11400000, guid: df52ddd90fa195c4691f83297dc9c601, type: 2}
+--- !u!114 &4097002890032756506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041874545346865386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 706269e080057304fa5ef5c77a67c5ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileStats: {fileID: 11400000, guid: df52ddd90fa195c4691f83297dc9c601, type: 2}
+--- !u!58 &-3632015819019983017
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9041874545346865386}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5

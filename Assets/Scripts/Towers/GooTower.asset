@@ -10,9 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15bca4610b157f243a7c85f47ace82ca, type: 3}
-  m_Name: MachineGuin
+  m_Name: GooTower
   m_EditorClassIdentifier: 
-  range: 2
-  reloadTime: 0.5
+  range: 3
+  reloadTime: 10
   health: 100
-  projectilePrefab: {fileID: 9041874545346865386, guid: e02b8b88be8b84447a99b7e95627780e, type: 3}
+  projectilePrefab: {fileID: 8941373032711630219, guid: 8f55a3f5e6ca6a54fb5e9df7de054c17, type: 3}
+  projectileDamage: 1
+  sellCost: 500
+  upgradeCost: 150
+  rangeUpgradeIncrement: 0
+  reloadTimeUpgradeIncrement: 0
+  healthUpgradeIncrement: 100
+  damageUpgradeIncrement: 1
+  towerType: 2
