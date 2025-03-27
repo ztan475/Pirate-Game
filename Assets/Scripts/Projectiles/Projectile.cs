@@ -11,6 +11,21 @@ public class Projectile : MonoBehaviour
     // private float minDistanceToDealDamage = 0.1f;
     private BasicEnemy enemyTarget;
     private Tower currentTower;
+    private float minDistanceToDealDamage = 0.1f;
+    private Unit enemyTarget;
+    private BoxCollider2D boxCollider;
+
+    protected virtual void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
+
+        // Set collider to size of sprite
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        if (spriteRenderer != null && boxCollider != null)
+        {
+            boxCollider.size = spriteRenderer.bounds.size;
+        }
+    }
 
     protected virtual void Update()
     {
@@ -28,6 +43,12 @@ public class Projectile : MonoBehaviour
     protected virtual void MoveProjectile()
     {
         transform.position = Vector2.MoveTowards(transform.position, enemyTarget.transform.position, projectileStats.projectileVelocity * Time.deltaTime);
+        float distanceBetweenEnemyTarget = (enemyTarget.transform.position - transform.position).magnitude;
+        if(distanceBetweenEnemyTarget < minDistanceToDealDamage)
+        {
+            enemyTarget.TakeDamage(projectileStats.damage);
+            Destroy(gameObject);
+        }
     }
 
     private void RotateProjectile()
@@ -37,7 +58,7 @@ public class Projectile : MonoBehaviour
         transform.Rotate(0f,0f,angle);
     }
 
-    public void SetEnemy(BasicEnemy enemy)
+    public void SetEnemy(Unit enemy)
     {
         enemyTarget = enemy;
     }
@@ -50,5 +71,15 @@ public class Projectile : MonoBehaviour
     public Tower GetTower()
     {
         return currentTower;
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject == enemyTarget.gameObject)
+        {
+            enemyTarget.TakeDamage(projectileStats.damage);
+            
+            Destroy(gameObject);
+        }
     }
 }

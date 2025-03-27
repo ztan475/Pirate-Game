@@ -16,7 +16,7 @@ public class Tower : MonoBehaviour
 
     private CircleCollider2D towerCollider2D;
     private ArrayList enemyList = new ArrayList();
-    private BasicEnemy currentEnemy;
+    private Unit currentEnemy;
     private bool canShoot;
     
 
@@ -47,7 +47,7 @@ public class Tower : MonoBehaviour
             currentEnemy = null;
             return;
         }
-        currentEnemy = (BasicEnemy) enemyList[0];
+        currentEnemy = (Unit) enemyList[0];
     }
 
     // Tracks all enemies within range
@@ -55,7 +55,7 @@ public class Tower : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            BasicEnemy newEnemy = collision.GetComponent<BasicEnemy>();
+            Unit newEnemy = collision.GetComponent<Unit>();
             enemyList.Add(newEnemy);
         }
     }
@@ -64,7 +64,7 @@ public class Tower : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            BasicEnemy enemy = collision.GetComponent<BasicEnemy>();
+            Unit enemy = collision.GetComponent<Unit>();
             if(enemyList.Contains(enemy))
                 enemyList.Remove(enemy);
         }
