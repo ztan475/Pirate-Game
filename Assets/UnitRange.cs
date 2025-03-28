@@ -36,7 +36,8 @@ public class UnitRange : MonoBehaviour
         {
             enemyUnit.UnitExit(collision.gameObject.tag);
         }
-        else
+        
+        if (playerUnit != null)
         {
             playerUnit.UnitExit(collision.gameObject.tag);
         }
