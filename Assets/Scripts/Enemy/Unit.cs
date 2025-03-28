@@ -25,6 +25,12 @@ public class Unit : MonoBehaviour
     [SerializeField] protected int defense = 0;
     [SerializeField] protected float range = 0.5f;
 
+    [Header("Unit Sprites")]
+    [SerializeField] private Sprite[] idleSprites;
+    [SerializeField] private Sprite[] walkSprites;
+    [SerializeField] private Sprite[] attackSprites;
+    [SerializeField] private float animationSpeed = 0.1f;
+
     protected NavMeshAgent agent;
     protected string targetTag;
     private GameObject currentTarget = null;
@@ -33,6 +39,9 @@ public class Unit : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     public int Attack => attack;
     public int Health => health;
+
+    private SpriteRenderer spriteRenderer;
+    private int currentSpriteIndex = 0;
     
 
     // Start is called before the first frame update
@@ -40,6 +49,13 @@ public class Unit : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         GetComponentInChildren<UnitRange>().SetRange(range);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (idleSprites.Length > 0)
+        {
+            spriteRenderer.sprite = idleSprites[0];
+        }
     }
 
     // Update is called once per frame
@@ -68,11 +84,43 @@ public class Unit : MonoBehaviour
         if (targetObject && attackCoroutine == null)
         {
             agent.SetDestination(targetObject.transform.position);
+
+            if (walkSprites.Length > 0)
+            {
+                SpriteWalk();
+            }
         }
         else
         {
             agent.isStopped = true;
             agent.ResetPath();
+
+            if (idleSprites.Length > 0)
+            {
+                SpriteIdle();
+            }
+        }
+    }
+
+    public void SpriteWalk()
+    {
+        if (walkSprites.Length == 1){
+            spriteRenderer.sprite = walkSprites[0];
+        }
+        else
+        {
+            // Use animated sprites
+        }
+    }
+
+    public void SpriteIdle()
+    {
+        if (idleSprites.Length == 1){
+            spriteRenderer.sprite = idleSprites[0];
+        }
+        else
+        {
+            // Use animated sprites
         }
     }
 
@@ -92,6 +140,8 @@ public class Unit : MonoBehaviour
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
+
+            SpriteIdle();
         }
     }
 
@@ -127,6 +177,7 @@ public class Unit : MonoBehaviour
     {
         while (true)
         {
+            yield return StartCoroutine(SpriteAttackAnimation());
             if (this.type == UnitType.Melee)
             {
                 MeleeAttack();
@@ -137,6 +188,7 @@ public class Unit : MonoBehaviour
             }
             
             yield return new WaitForSeconds(attackSpeed);
+            attackCoroutine = null;
         }
     }
 
@@ -172,5 +224,18 @@ public class Unit : MonoBehaviour
 
         Projectile projectileScript = attack.GetComponent<Projectile>();
         projectileScript.SetEnemy(currentTarget.GetComponent<Unit>());
+    }
+
+    private IEnumerator SpriteAttackAnimation()
+    {
+        currentSpriteIndex = 0;
+        while (currentSpriteIndex < attackSprites.Length)
+        {
+            spriteRenderer.sprite = attackSprites[currentSpriteIndex];
+            currentSpriteIndex++;
+            yield return new WaitForSeconds(animationSpeed);
+        }
+        
+        SpriteIdle();
     }
 }

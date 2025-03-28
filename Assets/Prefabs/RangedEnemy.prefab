@@ -78,8 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 59d9ff3f729784678b38dae76f355b3a, type: 3}
-  m_Color: {r: 0.40580845, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 96b59e1bec84e4d4a8baf6e6c886425c, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.9846154, y: 0.9846154}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -204,6 +204,16 @@ MonoBehaviour:
   attackSpeed: 1
   defense: 0
   range: 5
+  idleSprites:
+  - {fileID: 21300000, guid: 96b59e1bec84e4d4a8baf6e6c886425c, type: 3}
+  walkSprites:
+  - {fileID: 21300000, guid: 5b47c823852324a70b302d1198549380, type: 3}
+  attackSprites:
+  - {fileID: -1946785398, guid: f22bd01cbc69d40daa2d834ccd003d26, type: 3}
+  - {fileID: -1887763314, guid: f22bd01cbc69d40daa2d834ccd003d26, type: 3}
+  - {fileID: -184507877, guid: f22bd01cbc69d40daa2d834ccd003d26, type: 3}
+  - {fileID: 1919790496, guid: f22bd01cbc69d40daa2d834ccd003d26, type: 3}
+  animationSpeed: 0.2
 --- !u!1 &7924154450054235643
 GameObject:
   m_ObjectHideFlags: 0
