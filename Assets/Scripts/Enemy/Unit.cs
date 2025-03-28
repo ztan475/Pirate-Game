@@ -3,8 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+public enum UnitType
+{
+    Melee,
+    Ranged,
+    Shielder
+}
+
 public class Unit : MonoBehaviour
 {
+    [Header("Unit Type and Attack Properties")]
+    public UnitType type;
+    public GameObject meleeAttackHitbox;
+    public GameObject projectile;
+
+    [Header("Unit Stats")]
     [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] protected int attack = 10;
     [SerializeField] protected int health = 100;
@@ -14,6 +27,8 @@ public class Unit : MonoBehaviour
 
     protected NavMeshAgent agent;
     protected string targetTag;
+    private GameObject currentTarget = null;
+    private Coroutine attackCoroutine = null;
 
     public float MoveSpeed => moveSpeed;
     public int Attack => attack;
@@ -29,18 +44,54 @@ public class Unit : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
-        if (gameObject.tag == "Enemy")
+        transform.rotation = Quaternion.identity;
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(targetTag);
+        GameObject targetObject = null;
+        foreach (GameObject gameObject in gameObjects)
         {
-            if (Input.GetKey(KeyCode.A))
+            if (targetObject == null)
             {
-                transform.position += Vector3.left * Time.deltaTime * moveSpeed;
+                targetObject = gameObject;
             }
-            if (Input.GetKey(KeyCode.D))
+            else if (Vector3.Distance(gameObject.transform.position, transform.position) < Vector3.Distance(targetObject.transform.position, transform.position))
             {
-                transform.position += Vector3.right * Time.deltaTime * moveSpeed;
+                targetObject = gameObject;
             }
+        }
+        if (currentTarget != targetObject)
+        {
+            Debug.Log("Changing target");
+            currentTarget = targetObject;
+        }
+
+        if (targetObject && attackCoroutine == null)
+        {
+            agent.SetDestination(targetObject.transform.position);
+        }
+        else
+        {
+            agent.isStopped = true;
+            agent.ResetPath();
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == targetTag && attackCoroutine == null)
+        {
+            agent.isStopped = true;
+            attackCoroutine = StartCoroutine(StartAttacking());
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == targetTag && attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
         }
     }
 
@@ -70,5 +121,56 @@ public class Unit : MonoBehaviour
         string tag = gameObject.tag;
         Debug.Log("An " + tag + " has died!");
         Destroy(gameObject);
+    }
+
+    IEnumerator StartAttacking()
+    {
+        while (true)
+        {
+            if (this.type == UnitType.Melee)
+            {
+                MeleeAttack();
+            }
+            else if (this.type == UnitType.Ranged)
+            {
+                RangedAttack();
+            }
+            
+            yield return new WaitForSeconds(attackSpeed);
+        }
+    }
+
+    void MeleeAttack()
+    {
+        // Get direction to the target and rotate sprite (rotate 90 degrees for vertical facing sprite rn)
+        Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
+        Vector3 rotatedDirection = new Vector3(-directionToTarget.y, directionToTarget.x, 0);
+        Quaternion attackRotation = Quaternion.LookRotation(Vector3.forward, rotatedDirection);
+
+        Vector3 spawnPosition = transform.position + directionToTarget * 0.60f;
+        GameObject attack = Instantiate(meleeAttackHitbox, spawnPosition, attackRotation);
+
+        MeleeHitbox enemyAttackHitbox = attack.GetComponent<MeleeHitbox>();
+        List<GameObject> alliesHit = enemyAttackHitbox.unitsHit(targetTag);
+
+        foreach (GameObject obj in alliesHit)
+        {
+            Unit unit = obj.GetComponent<Unit>();
+            unit.TakeDamage(this);
+        }
+
+        Destroy(attack, 0.5f);
+    }
+
+    void RangedAttack()
+    {
+        Vector3 directionToTarget = (currentTarget.transform.position - transform.position).normalized;
+        Quaternion attackRotation = Quaternion.LookRotation(Vector3.forward, directionToTarget);
+
+        Vector3 spawnPosition = transform.position + directionToTarget * 0.30f;
+        GameObject attack = Instantiate(projectile, spawnPosition, attackRotation);
+
+        Projectile projectileScript = attack.GetComponent<Projectile>();
+        projectileScript.SetEnemy(currentTarget.GetComponent<Unit>());
     }
 }

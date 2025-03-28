@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5022658385508647778}
   - component: {fileID: -4551212264114218586}
   - component: {fileID: 6456312032585274006}
-  - component: {fileID: 4149366393015882018}
+  - component: {fileID: -314000421501644507}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -182,7 +182,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &4149366393015882018
+--- !u!114 &-314000421501644507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,13 +191,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4430212057693561320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90b3d0f556eb04cc28b0b749284cf885, type: 3}
+  m_Script: {fileID: 11500000, guid: d5d74fa7dc9904ffa90116f196b69106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 1
+  meleeAttackHitbox: {fileID: 4625673485556481858, guid: fb299fa5d8f8f40499d8ecb8b6f21b6d, type: 3}
+  projectile: {fileID: 5801246956048828501, guid: 7f6d23ca3f6b6458f9b71995af8fee76, type: 3}
   moveSpeed: 5
   attack: 20
   health: 50
   attackSpeed: 1
   defense: 0
   range: 5
-  projectile: {fileID: 5801246956048828501, guid: 7f6d23ca3f6b6458f9b71995af8fee76, type: 3}
