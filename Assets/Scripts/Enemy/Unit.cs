@@ -25,6 +25,13 @@ public class Unit : MonoBehaviour
     [SerializeField] protected int defense = 0;
     [SerializeField] protected float range = 0.5f;
 
+    [Header("Unit Stats")]
+    [SerializeField] private Sprite[] idleSprites;
+    [SerializeField] private Sprite[] walkSprites;
+    [SerializeField] private int frameIndex = 0;
+    [SerializeField] private float animationTimer = 0f;
+    [SerializeField] private float animationSpeed = 0.1f;
+
     protected NavMeshAgent agent;
     protected string targetTag;
     private GameObject currentTarget = null;
@@ -33,6 +40,8 @@ public class Unit : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     public int Attack => attack;
     public int Health => health;
+
+    private SpriteRenderer spriteRenderer;
     
 
     // Start is called before the first frame update
@@ -40,6 +49,9 @@ public class Unit : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         GetComponentInChildren<UnitRange>().SetRange(range);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = idleSprites[0];
     }
 
     // Update is called once per frame
@@ -68,11 +80,13 @@ public class Unit : MonoBehaviour
         if (targetObject && attackCoroutine == null)
         {
             agent.SetDestination(targetObject.transform.position);
+            spriteRenderer.sprite = walkSprites[0];
         }
         else
         {
             agent.isStopped = true;
             agent.ResetPath();
+            spriteRenderer.sprite = idleSprites[0];
         }
     }
 
