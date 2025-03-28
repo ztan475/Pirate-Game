@@ -5,17 +5,16 @@ using UnityEngine.UI;
 
 public class UnitSpawning : MonoBehaviour
 {
-    [Header("Unit Spawn Buttons")]
-    [SerializeField] private Button spawnAlly;
-    [SerializeField] private Button spawnEnemy;
-
     [Header("Unit Prefabs")]
     [SerializeField] private GameObject allyPrefab;
+    [SerializeField] private GameObject allyRangedPrefab;
     [SerializeField] private GameObject enemyMeleePrefab;
     [SerializeField] private GameObject enemyRangedPrefab;
+
     [Header("Spawn Location")]
     [SerializeField] private GameObject allySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +37,13 @@ public class UnitSpawning : MonoBehaviour
         Instantiate(enemyRangedPrefab, enemySpawnPoint.transform.position, Quaternion.identity);
     }
 
-    public void spawnGenericAllyUnit()
+    public void spawnMeleeAllyUnit()
     {
         Instantiate(allyPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+    }
+
+    public void spawnRangedAllyUnit()
+    {
+        Instantiate(allyRangedPrefab, allySpawnPoint.transform.position, Quaternion.identity);
     }
 }
