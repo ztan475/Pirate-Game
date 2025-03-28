@@ -141,7 +141,7 @@ public class Unit : MonoBehaviour
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
 
-            spriteRenderer.sprite = SpriteIdle[0];
+            SpriteIdle();
         }
     }
 
@@ -236,6 +236,6 @@ public class Unit : MonoBehaviour
             yield return new WaitForSeconds(animationSpeed);
         }
         
-        spriteRenderer.sprite = idleSprites[0];
+        SpriteIdle();
     }
 }
