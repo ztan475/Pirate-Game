@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Base : MonoBehaviour
 {
-    [SerializeField] protected int baseHealth;
+    [SerializeField] protected int health;
+    [SerializeField] protected GameObject defeatScreen;
     public int Health => health;
-    GameObject loseScreen;
+
     // Start is called before the first frame update
     void Start()
     {
-        loseScreen = GameObject.Find("Lose Screen");
-        loseScreen.SetActive(false);
+        defeatScreen.SetActive(false);
         Time.timeScale = 1;
     }
 
@@ -27,7 +27,7 @@ public class Base : MonoBehaviour
         Debug.Log(damage + " damage dealt to tower. " + health + " health remaining");
         if (health <= 0)
         {
-            loseScreen.SetActive(true);
+            defeatScreen.SetActive(true);
             Time.timeScale = 0;
         }
     }
