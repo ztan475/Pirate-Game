@@ -9,10 +9,8 @@ public class EnemyUnit : Unit
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
         targetTag = "Ally";
-        BoxCollider2D boxCollider = gameObject.GetComponent<BoxCollider2D>();
-        boxCollider.size = new Vector2(range * 2, range * 2);
+        base.Start();
     }
 
     // Update is called once per frame

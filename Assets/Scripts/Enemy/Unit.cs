@@ -36,11 +36,10 @@ public class Unit : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-
-        BoxCollider2D boxCollider = gameObject.GetComponent<BoxCollider2D>();
-        boxCollider.size = new Vector2(range * 2, range * 2);
+        agent = GetComponent<NavMeshAgent>();
+        GetComponentInChildren<UnitRange>().SetRange(range);
     }
 
     // Update is called once per frame
@@ -77,18 +76,19 @@ public class Unit : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
+    public void UnitDetected(string collisionTag)
     {
-        if (collision.gameObject.tag == targetTag && attackCoroutine == null)
+        if (collisionTag == targetTag && attackCoroutine == null)
         {
             agent.isStopped = true;
+            agent.ResetPath();
             attackCoroutine = StartCoroutine(StartAttacking());
         }
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    public void UnitExit(string collisionTag)
     {
-        if (collision.gameObject.tag == targetTag && attackCoroutine != null)
+        if (collisionTag == targetTag && attackCoroutine != null)
         {
             StopCoroutine(attackCoroutine);
             attackCoroutine = null;
