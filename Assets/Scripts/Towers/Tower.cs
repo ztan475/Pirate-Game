@@ -102,7 +102,7 @@ public class Tower : MonoBehaviour
 
     public void UpgradeTower()
     {
-        if(CurrencySystem.Instance.totalGold >= upgradeCost)
+        if(CurrencySystem.Instance.CheckGold() >= upgradeCost)
         {
             towerCollider2D.radius = towerCollider2D.radius + towerStats.rangeUpgradeIncrement;
             health += towerStats.healthUpgradeIncrement;

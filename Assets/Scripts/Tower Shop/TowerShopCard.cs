@@ -28,7 +28,7 @@ public class TowerShopCard : MonoBehaviour
 
     public void PlaceTurret()
     {
-        if(CurrencySystem.Instance.totalGold >= towerSettings.towerCost)
+        if(CurrencySystem.Instance.CheckGold() >= towerSettings.towerCost)
         {
             GameObject newTower = Instantiate(towerSettings.towerPrefab, UIManager.Instance.GetCurrentNodePos(), Quaternion.identity);
             CurrencySystem.Instance.RemoveCoins(towerSettings.towerCost);

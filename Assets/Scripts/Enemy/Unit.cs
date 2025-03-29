@@ -157,12 +157,38 @@ public class Unit : MonoBehaviour
         GameObject attack = Instantiate(meleeAttackHitbox, spawnPosition, attackRotation);
 
         MeleeHitbox enemyAttackHitbox = attack.GetComponent<MeleeHitbox>();
-        List<GameObject> alliesHit = enemyAttackHitbox.unitsHit(targetTag);
+        List<GameObject> unitsHit = enemyAttackHitbox.unitsHit(targetTag);
 
-        foreach (GameObject obj in alliesHit)
+        foreach (GameObject obj in unitsHit)
         {
-            Unit unit = obj.GetComponent<Unit>();
-            unit.TakeDamage(this);
+            if (targetTag == "Enemy")
+            {
+                EnemyUnit unit = obj.GetComponent<EnemyUnit>();
+                if (unit == null)
+                {
+                    Base bruh = obj.GetComponent<Base>();
+                    bruh.TakeDamage(this.attack);
+                }
+                else
+                {
+                    unit.TakeDamage(this);
+                }
+                
+            }
+            else if (targetTag == "Ally")
+            {
+                PlayerUnit unit = obj.GetComponent<PlayerUnit>();
+                if (unit == null)
+                {
+                    Base bruh = obj.GetComponent<Base>();
+                    bruh.TakeDamage(this.attack);
+                }
+                else
+                {
+                    unit.TakeDamage(this);
+                }
+            }
+            
         }
 
         Destroy(attack, 0.5f);

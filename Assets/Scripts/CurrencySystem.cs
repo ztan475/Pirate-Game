@@ -7,7 +7,7 @@ public class CurrencySystem : MonoBehaviour
 {
     public static CurrencySystem Instance;
     [SerializeField] private int startingGold;
-    public int totalGold;
+    private int totalGold;
     public GameObject goldText;
 
     private void Awake()
@@ -39,8 +39,14 @@ public class CurrencySystem : MonoBehaviour
     {
         totalGold += amount;
     }
+
     public void RemoveCoins(int amount)
     {
         totalGold -= amount;
+    }
+
+    public int CheckGold()
+    {
+        return totalGold;
     }
 }
