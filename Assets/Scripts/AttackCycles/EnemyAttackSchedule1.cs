@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackSchedule : MonoBehaviour
+public class EnemyAttackSchedule1 : MonoBehaviour
 {
     private UnitSpawning spawner;
 
@@ -29,7 +29,7 @@ public class EnemyAttackSchedule : MonoBehaviour
             spawner.spawnMeleeEnemyUnit();
             spawner.spawnMeleeEnemyUnit();
             spawner.spawnRangedEnemyUnit();
-            yield return new WaitForSeconds(25);
+            yield return new WaitForSeconds(30);
         }
     }
 }

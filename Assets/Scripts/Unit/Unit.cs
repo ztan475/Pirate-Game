@@ -7,7 +7,8 @@ public enum UnitType
 {
     Melee,
     Ranged,
-    Shielder
+    Shielder,
+    Cart
 }
 
 public class Unit : MonoBehaviour
@@ -30,6 +31,7 @@ public class Unit : MonoBehaviour
     private GameObject currentTarget = null;
     private Coroutine attackCoroutine = null;
     private Animator anim = null;
+    private AudioSource attackAudioSource;
 
     public float MoveSpeed => moveSpeed;
     public int Attack => attack;
@@ -45,6 +47,7 @@ public class Unit : MonoBehaviour
         anim.SetBool("isWalking", false);
         anim.SetBool("isAttacking", false);
         anim.SetBool("isDead", false);
+        attackAudioSource = GetComponents<AudioSource>()[1];
 
     }
 
@@ -55,7 +58,18 @@ public class Unit : MonoBehaviour
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(targetTag);
         GameObject targetObject = null;
 
-        
+        // Cart behaviour
+        if (type == UnitType.Cart)
+        {
+            GameObject playerBase = GameObject.Find("playerBase");
+            if (playerBase != null)
+            {
+                currentTarget = playerBase;
+                agent.SetDestination(playerBase.transform.position);
+                anim.SetBool("isWalking", true);
+            }
+            return;
+        }
 
         foreach (GameObject gameObject in gameObjects)
         {
@@ -86,18 +100,7 @@ public class Unit : MonoBehaviour
             anim.SetBool("isWalking", false);
         }
 
-        // Cart behaviour
-        if (gameObject.name.Contains("Cart"))
-    {
-        GameObject playerBase = GameObject.Find("playerBase");
-        if (playerBase != null)
-        {
-            currentTarget = playerBase;
-            agent.SetDestination(playerBase.transform.position);
-            anim.SetBool("isWalking", true);
-        }
-        return;
-    }
+        
     }
 
     public void UnitDetected(string collisionTag)
@@ -172,11 +175,17 @@ public class Unit : MonoBehaviour
         {
             if (this.type == UnitType.Melee)
             {
+                attackAudioSource.PlayOneShot(attackAudioSource.clip);
                 MeleeAttack();
             }
             else if (this.type == UnitType.Ranged)
             {
                 RangedAttack();
+            }
+            else if (this.type == UnitType.Cart)
+            {
+                MeleeAttack();
+                Destroy(gameObject);
             }
             
             yield return new WaitForSeconds(attackSpeed);

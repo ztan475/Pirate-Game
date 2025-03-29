@@ -147,7 +147,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.48, y: 0.61866665}
+    oldSize: {x: 1.44, y: 1.856}
     newSize: {x: 4.8, y: 4.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -217,11 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d74fa7dc9904ffa90116f196b69106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  type: 3
   meleeAttackHitbox: {fileID: 4625673485556481858, guid: fb299fa5d8f8f40499d8ecb8b6f21b6d, type: 3}
   projectile: {fileID: 5801246956048828501, guid: 7f6d23ca3f6b6458f9b71995af8fee76, type: 3}
   moveSpeed: 3
-  attack: 0
+  attack: 200
   health: 250
   attackSpeed: 1
   defense: 0
