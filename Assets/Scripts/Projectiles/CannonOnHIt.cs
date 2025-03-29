@@ -11,27 +11,33 @@ public class CannonOnHit : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
             Explode();
-            Destroy(gameObject,0.05f);
+            Debug.Log("ksakjdksasada");
+            Destroy(gameObject);
         }
+        
     }
 
 
     private void Explode()
     {
         GameObject explosion = Instantiate(projectileStats.projectileOnHit, transform.position, Quaternion.identity);
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, projectileStats.radius, projectileStats.targetLayer);
-        foreach (Collider2D enemy in enemies)
-        {
-            enemy.gameObject.GetComponent<EnemyUnit>().TakeDamage(damage);
-            Debug.Log(damage);
+        gameObject.GetComponent<CircleCollider2D>().radius *= 10;
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.GetComponent<CircleCollider2D>().bounds.center, gameObject.GetComponent<CircleCollider2D>().radius, LayerMask.GetMask("Enemy"));
+        Debug.Log(colliders.Length);
+        foreach (var enemy in colliders) {
+            EnemyUnit enemyUnit = enemy.GetComponent<EnemyUnit>();
+            if(enemyUnit != null)
+            {
+                enemyUnit.TakeDamage(damage);
+            }
+
         }
+
         Destroy(explosion, 0.1f);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawSphere(transform.position, projectileStats.radius);
-    }
+
 }
