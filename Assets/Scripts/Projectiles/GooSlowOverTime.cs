@@ -20,6 +20,7 @@ public class GooSlowOverTime : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Debug.Log("slowing");
             collision.gameObject.GetComponent<NavMeshAgent>().speed *= slowAmount;
         }
     }

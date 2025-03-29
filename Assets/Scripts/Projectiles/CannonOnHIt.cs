@@ -12,21 +12,23 @@ public class CannonOnHit : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy"))
         {
             Explode();
-            Destroy(gameObject,0.05f);
+            Destroy(gameObject);
         }
+        
     }
 
 
     private void Explode()
     {
+        
         GameObject explosion = Instantiate(projectileStats.projectileOnHit, transform.position, Quaternion.identity);
+        Destroy(explosion, 0.1f);
         Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, projectileStats.radius, projectileStats.targetLayer);
         foreach (Collider2D enemy in enemies)
         {
             enemy.gameObject.GetComponent<EnemyUnit>().TakeDamage(damage);
             Debug.Log(damage);
         }
-        Destroy(explosion, 0.1f);
     }
 
     private void OnDrawGizmos()

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4551212264114218586}
   - component: {fileID: 6456312032585274006}
   - component: {fileID: 6716193604413867701}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: MeleeEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -140,14 +140,14 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0181818, y: 1.0181818}
+    oldSize: {x: 2.24, y: 2.24}
     newSize: {x: 1.0181818, y: 1.0181818}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 1601912836240257897}
   - component: {fileID: 170771954844089802}
   - component: {fileID: 7348002637637982426}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Range
   m_TagString: Untagged
   m_Icon: {fileID: 0}
