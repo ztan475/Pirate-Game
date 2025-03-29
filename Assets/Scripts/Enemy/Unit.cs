@@ -42,6 +42,10 @@ public class Unit : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         GetComponentInChildren<UnitRange>().SetRange(range);
         anim = GetComponent<Animator>();
+        anim.SetBool("isWalking", false);
+        anim.SetBool("isAttacking", false);
+        anim.SetBool("isDead", false);
+
     }
 
     // Check if there are any targets in the scene.
@@ -142,6 +146,23 @@ public class Unit : MonoBehaviour
     {
         string tag = gameObject.tag;
         Debug.Log("An " + tag + " has died!");
+        agent.isStopped = true;
+        agent.ResetPath();
+        anim.SetBool("isDead", true);
+        this.enabled = false;
+
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+        }
+
+        Invoke("DestroyUnit", 0.75f);
+    }
+
+    private void DestroyUnit()
+    {
+        // Destroy the GameObject after 0.75 seconds
         Destroy(gameObject);
     }
 

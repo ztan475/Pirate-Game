@@ -11,6 +11,7 @@ public class UnitSpawning : MonoBehaviour
     [Header("Unit Prefabs")]
     [SerializeField] private GameObject allyPrefab;
     [SerializeField] private GameObject allyRangedPrefab;
+    [SerializeField] private GameObject allyShielderPrefab;
     [SerializeField] private GameObject enemyMeleePrefab;
     [SerializeField] private GameObject enemyRangedPrefab;
     [SerializeField] private GameObject enemyShielderPrefab;
@@ -69,6 +70,15 @@ public class UnitSpawning : MonoBehaviour
         {
             Instantiate(allyRangedPrefab, allySpawnPoint.transform.position, Quaternion.identity);
             currencySystem.RemoveCoins(15);
+        }
+    }
+
+    public void spawnShielderAllyUnit()
+    {
+        if (currencySystem.CheckGold() >= 20)
+        {
+            Instantiate(allyShielderPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            currencySystem.RemoveCoins(20);
         }
     }
 }
