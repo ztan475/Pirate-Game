@@ -10,13 +10,13 @@ public class EnemyUnit : Unit
     void Start()
     {
         targetTag = "Ally";
-        base.Start();
+        base.Init();
     }
 
     // Update is called once per frame
     void Update()
     {
-        base.Update();
+        base.ScanForTargets();
     }
 
 }

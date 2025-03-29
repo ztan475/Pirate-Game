@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CurrencySystem : MonoBehaviour
@@ -7,6 +8,7 @@ public class CurrencySystem : MonoBehaviour
     public static CurrencySystem Instance;
     [SerializeField] private int startingGold;
     public int totalGold;
+    public GameObject goldText;
 
     private void Awake()
     {
@@ -23,6 +25,14 @@ public class CurrencySystem : MonoBehaviour
     private void Start()
     {
         totalGold = startingGold;
+    }
+
+    private void Update()
+    {
+        if (goldText != null)
+        {
+            goldText.GetComponentInChildren<TextMeshProUGUI>().SetText($"Gold:{totalGold}");
+        }
     }
 
     public void AddCoins(int amount)

@@ -24,7 +24,6 @@ public class CannonOnHit : MonoBehaviour
         foreach (Collider2D enemy in enemies)
         {
             enemy.gameObject.GetComponent<EnemyUnit>().TakeDamage(damage);
-            // Add function to Unit.
             Debug.Log(damage);
         }
         Destroy(explosion, 0.1f);

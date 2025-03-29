@@ -36,18 +36,18 @@ public class Unit : MonoBehaviour
     public int Health => health;
     
 
-    // Start is called before the first frame update
-    protected void Start()
+    // Function used to initialize components needed for unit functionality.
+    protected void Init()
     {
         agent = GetComponent<NavMeshAgent>();
         GetComponentInChildren<UnitRange>().SetRange(range);
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    protected void Update()
+    // Check if there are any targets in the scene.
+    protected void ScanForTargets()
     {
-        transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.identity; // Necessary because of nav mesh being dumb.
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(targetTag);
         GameObject targetObject = null;
         foreach (GameObject gameObject in gameObjects)
