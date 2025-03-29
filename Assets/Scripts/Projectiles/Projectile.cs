@@ -43,11 +43,11 @@ public class Projectile : MonoBehaviour
     {
         transform.position = Vector2.MoveTowards(transform.position, enemyTarget.transform.position, projectileStats.projectileVelocity * Time.deltaTime);
         float distanceBetweenEnemyTarget = (enemyTarget.transform.position - transform.position).magnitude;
-        if(distanceBetweenEnemyTarget < minDistanceToDealDamage)
+        /*if(distanceBetweenEnemyTarget < minDistanceToDealDamage)
         {
             enemyTarget.TakeDamage(projectileStats.damage);
             Destroy(gameObject);
-        }
+        }*/
     }
 
     private void RotateProjectile()
@@ -72,7 +72,7 @@ public class Projectile : MonoBehaviour
         return currentTower;
     }
     
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject == enemyTarget.gameObject)
         {
@@ -80,5 +80,5 @@ public class Projectile : MonoBehaviour
             
             Destroy(gameObject);
         }
-    }
+    }*/
 }
