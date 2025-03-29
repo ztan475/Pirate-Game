@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6456312032585274006}
   - component: {fileID: -314000421501644507}
   m_Layer: 0
-  m_Name: RangedEnemy
+  m_Name: ShielderEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,12 +79,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 96b59e1bec84e4d4a8baf6e6c886425c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e671efdbef2734d8890da3cf4b15cf6f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 4.8, y: 4.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,7 +100,7 @@ Animator:
   m_GameObject: {fileID: 4430212057693561320}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7265527ef6bd04f42a68df61d90aed7b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 524cac1d6468c4d7882aeda7efc033cc, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -147,8 +147,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.8285714, y: 1.8285714}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 7.3846154, y: 7.3846154}
+    newSize: {x: 4.8, y: 4.8}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -217,15 +217,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5d74fa7dc9904ffa90116f196b69106, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   meleeAttackHitbox: {fileID: 4625673485556481858, guid: fb299fa5d8f8f40499d8ecb8b6f21b6d, type: 3}
   projectile: {fileID: 5801246956048828501, guid: 7f6d23ca3f6b6458f9b71995af8fee76, type: 3}
-  moveSpeed: 5
-  attack: 20
-  health: 50
+  moveSpeed: 3
+  attack: 0
+  health: 250
   attackSpeed: 1
   defense: 0
-  range: 5
+  range: 1
 --- !u!1 &7924154450054235643
 GameObject:
   m_ObjectHideFlags: 0

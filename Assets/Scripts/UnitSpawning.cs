@@ -13,6 +13,7 @@ public class UnitSpawning : MonoBehaviour
     [SerializeField] private GameObject allyRangedPrefab;
     [SerializeField] private GameObject enemyMeleePrefab;
     [SerializeField] private GameObject enemyRangedPrefab;
+    [SerializeField] private GameObject enemyShielderPrefab;
 
     [Header("Spawn Location")]
     [SerializeField] private GameObject allySpawnPoint;
@@ -40,6 +41,11 @@ public class UnitSpawning : MonoBehaviour
     public void spawnRangedEnemyUnit()
     {
         Instantiate(enemyRangedPrefab, enemySpawnPoint.transform.position, Quaternion.identity);
+    }
+
+    public void spawnShielderEnemyUnit()
+    {
+        Instantiate(enemyShielderPrefab, enemySpawnPoint.transform.position, Quaternion.identity);
     }
 
     public void spawnMeleeAllyUnit()
