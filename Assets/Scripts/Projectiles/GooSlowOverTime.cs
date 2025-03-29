@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GooSlowOverTime : MonoBehaviour
 {
     [SerializeField] private ProjectileStats projectileStats;
     [SerializeField] private float duration;
-    [Range(0,1)] private float slowAmount; 
+    [Range(0,1)] public float slowAmount; 
+
+    private Dictionary<GameObject,float> enemyList = new Dictionary<GameObject,float>();
 
     private void Awake()
     {
-        InvokeRepeating("SlowOverTime", 0.5f, 1.0f);
         Destroy(gameObject, duration);
     }
 
-    private void SlowOverTime()
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        Collider2D[] enemies = Physics2D.OverlapCircleAll(transform.position, projectileStats.radius, projectileStats.targetLayer);
-        foreach (Collider2D enemy in enemies)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-            // Take enemy move speed and reduce by however much
-            Debug.Log("Slow enemy down");
+            collision.gameObject.GetComponent<NavMeshAgent>().speed *= slowAmount;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<NavMeshAgent>().speed /= slowAmount;
         }
     }
 }

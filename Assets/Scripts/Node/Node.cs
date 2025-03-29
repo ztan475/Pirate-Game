@@ -7,21 +7,26 @@ public class Node : MonoBehaviour
 {
     public bool hasTower;
     public GameObject currentTower;
+    public GameObject shopUI;
+
+    private SpriteRenderer spriteRenderer;
 
     [SerializeField] private GameObject towerOptionUI;
-
+    
     private void Start()
     {
         hasTower = false;
         currentTower = null;
         towerOptionUI.SetActive(false);
+        shopUI.SetActive(false);
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void OpenShop()
     {
         if (!hasTower)
         {
-            UIManager.Instance.OpenShop();
+            shopUI.SetActive(true);
             UIManager.Instance.SetCurrentNodePos(gameObject.transform.position);
             UIManager.Instance.SetNode(this);
         }
@@ -50,6 +55,19 @@ public class Node : MonoBehaviour
         hasTower = false;
         Destroy(currentTower);
         currentTower = null;
+        SwitchNodeSprite();
         towerOptionUI.SetActive(false);
+    }
+
+    public void SwitchNodeSprite()
+    {
+        if (spriteRenderer.enabled)
+        {
+            spriteRenderer.enabled = false;
+        }
+        else
+        {
+            spriteRenderer.enabled = true;
+        }
     }
 }

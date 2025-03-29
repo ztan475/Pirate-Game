@@ -34,6 +34,7 @@ public class TowerShopCard : MonoBehaviour
             CurrencySystem.Instance.RemoveCoins(towerSettings.towerCost);
             UIManager.Instance.GetNode().hasTower = true;
             UIManager.Instance.GetNode().currentTower = newTower;
+            UIManager.Instance.GetNode().SwitchNodeSprite();
         }
         UIManager.Instance.CloseShop();      
     }
