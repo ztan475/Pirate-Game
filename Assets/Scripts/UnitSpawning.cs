@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class UnitSpawning : MonoBehaviour
 {
+    [Header("Gold")]
+    [SerializeField] private GameObject goldObject;
+
     [Header("Unit Prefabs")]
     [SerializeField] private GameObject allyPrefab;
     [SerializeField] private GameObject allyRangedPrefab;
@@ -15,10 +18,12 @@ public class UnitSpawning : MonoBehaviour
     [SerializeField] private GameObject allySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint;
 
+    private CurrencySystem currencySystem;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        currencySystem = goldObject.GetComponent<CurrencySystem>();
     }
 
     // Update is called once per frame
@@ -39,11 +44,19 @@ public class UnitSpawning : MonoBehaviour
 
     public void spawnMeleeAllyUnit()
     {
-        Instantiate(allyPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+        if (currencySystem.CheckGold() >= 10)
+        {
+            Instantiate(allyPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            currencySystem.RemoveCoins(10);
+        }
     }
 
     public void spawnRangedAllyUnit()
     {
-        Instantiate(allyRangedPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+        if (currencySystem.CheckGold() >= 15)
+        {
+            Instantiate(allyRangedPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            currencySystem.RemoveCoins(15);
+        }
     }
 }

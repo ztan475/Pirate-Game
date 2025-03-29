@@ -17,7 +17,7 @@ MonoBehaviour:
   health: 100
   projectilePrefab: {fileID: 8941373032711630219, guid: 8f55a3f5e6ca6a54fb5e9df7de054c17, type: 3}
   projectileDamage: 1
-  sellCost: 500
+  sellCost: 40
   upgradeCost: 150
   rangeUpgradeIncrement: 0
   reloadTimeUpgradeIncrement: 0
