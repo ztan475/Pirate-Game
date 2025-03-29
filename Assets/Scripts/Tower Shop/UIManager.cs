@@ -5,7 +5,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
-    [SerializeField] private GameObject shopUI;
+    // [SerializeField] private GameObject shopUI;
 
     private Node currentNode;
     private Vector3 currentNodePos;
@@ -24,7 +24,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        CloseShop();
+        // CloseShop();
     }
 
     public Vector3 GetCurrentNodePos()
@@ -49,11 +49,13 @@ public class UIManager : MonoBehaviour
 
     public void OpenShop()
     {
-        shopUI.SetActive(true);
+        currentNode.shopUI.SetActive(true);
+        // shopUI.SetActive(true);
     }
 
     public void CloseShop()
     {
-        shopUI.SetActive(false);
+        currentNode.shopUI.SetActive(false);
+        // shopUI.SetActive(false);
     }
 }

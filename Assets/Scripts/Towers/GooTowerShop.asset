@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: GooTowerShop
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 7968052739370508427, guid: 7e61a60e251b0b54db2c6117a0e6e3bd, type: 3}
-  towerCost: 1500
-  sellCost: 1100
-  towerShopSprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
+  towerCost: 50
+  towerShopSprite: {fileID: 21300000, guid: a9f55d829470a5e4aa74cd7244f219dc, type: 3}

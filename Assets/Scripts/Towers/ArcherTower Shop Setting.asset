@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: ArcherTower Shop Setting
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 7283257567580379701, guid: f460d44e08e7a5744876b79daf8dd5b9, type: 3}
-  towerCost: 2000
-  sellCost: 1500
-  towerShopSprite: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}
+  towerCost: 25
+  towerShopSprite: {fileID: 21300000, guid: 2bc6f8fc245556f45bab11ca84ed4312, type: 3}
