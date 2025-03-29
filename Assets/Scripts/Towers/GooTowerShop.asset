@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8c69ac6b2f90e42bcefb74eb34d15a, type: 3}
+  m_Name: GooTowerShop
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 7968052739370508427, guid: 7e61a60e251b0b54db2c6117a0e6e3bd, type: 3}
+  towerCost: 1500
+  sellCost: 1100
+  towerShopSprite: {fileID: -9095717837082945937, guid: bd3cb4af8406d4436a2ae8c2aafe1f8d, type: 3}
