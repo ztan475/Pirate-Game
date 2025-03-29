@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class Unit : MonoBehaviour
 {
-    [SerializeField] protected float moveSpeed = 3f;
+    [SerializeField] protected float moveSpeed = 5f;
     [SerializeField] protected int attack = 10;
     [SerializeField] protected int health = 100;
     [SerializeField] protected float attackSpeed = 1.0f;
     [SerializeField] protected int defense = 0;
-    [SerializeField] protected float range = 2;
+    [SerializeField] protected float range = 0.5f;
 
     protected NavMeshAgent agent;
     protected string targetTag;
@@ -18,8 +18,7 @@ public class Unit : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     public int Attack => attack;
     public int Health => health;
-    public GameObject attackArea;
-    private Coroutine attackCoroutine;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -56,53 +55,20 @@ public class Unit : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        Debug.Log(damage + " damage dealth. " + health + " health remaining");
+        if (health <= 0)
+        {
+            Die();
+        }
+    }
+
     private void Die()
     {
         string tag = gameObject.tag;
         Debug.Log("An " + tag + " has died!");
         Destroy(gameObject);
-    }
-
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == targetTag && attackCoroutine == null)
-        {
-            attackCoroutine = StartCoroutine(SummonAttackAreaRepeat());
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == targetTag && attackCoroutine != null)
-        {
-            StopCoroutine(attackCoroutine);
-            attackCoroutine = null;
-        }
-    }
-
-    IEnumerator SummonAttackAreaRepeat()
-    {
-        while (true)
-        {
-            SummonAttackArea();
-            yield return new WaitForSeconds(attackSpeed);
-        }
-    }
-
-    void SummonAttackArea()
-    {
-        Vector3 spawnPosition = gameObject.transform.position + Vector3.left * 0.75f;
-        GameObject attack = Instantiate(attackArea, spawnPosition, Quaternion.identity);
-
-        EnemyAttackHitbox enemyAttackHitbox = attack.GetComponent<EnemyAttackHitbox>();
-        List<GameObject> alliesHit = enemyAttackHitbox.unitsHit();
-
-        foreach (GameObject obj in alliesHit)
-        {
-            Unit unit = obj.GetComponent<Unit>();
-            unit.TakeDamage(this);
-        }
-        
-        Destroy(attack, 0.5f);
     }
 }

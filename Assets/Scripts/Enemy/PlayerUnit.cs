@@ -19,6 +19,7 @@ public class PlayerUnit : Unit
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = Quaternion.identity;
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject targetObject = null;
         foreach (GameObject gameObject in gameObjects)
@@ -36,6 +37,10 @@ public class PlayerUnit : Unit
         {
             Debug.Log("Changing target");
             currentTarget = targetObject;
+        }
+
+        if (targetObject)
+        {
             agent.SetDestination(targetObject.transform.position);
         }
     }
