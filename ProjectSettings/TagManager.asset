@@ -8,6 +8,7 @@ TagManager:
   - Node
   - Ally
   - Gold
+  - PlayerBase
   layers:
   - Default
   - TransparentFX

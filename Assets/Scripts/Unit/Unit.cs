@@ -61,7 +61,7 @@ public class Unit : MonoBehaviour
         // Cart behaviour
         if (type == UnitType.Cart)
         {
-            GameObject playerBase = GameObject.Find("playerBase");
+            GameObject playerBase = GameObject.FindGameObjectWithTag("PlayerBase");
             if (playerBase != null)
             {
                 currentTarget = playerBase;

@@ -20,6 +20,7 @@ public class UnitSpawning : MonoBehaviour
     [Header("Spawn Location")]
     [SerializeField] private GameObject allySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint;
+    [SerializeField] private GameObject enemySpawnPoint2;
 
     private CurrencySystem currencySystem;
 
@@ -53,6 +54,26 @@ public class UnitSpawning : MonoBehaviour
     public void spawnCartEnemyUnit()
     {
         Instantiate(enemyCartPrefab, enemySpawnPoint.transform.position, Quaternion.identity);
+    }
+
+    public void spawnMeleeEnemyUnit2()
+    {
+        Instantiate(enemyMeleePrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
+    public void spawnRangedEnemyUnit2()
+    {
+        Instantiate(enemyRangedPrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
+    public void spawnShielderEnemyUnit2()
+    {
+        Instantiate(enemyShielderPrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
+    public void spawnCartEnemyUnit2()
+    {
+        Instantiate(enemyCartPrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
     }
 
     public void spawnMeleeAllyUnit()

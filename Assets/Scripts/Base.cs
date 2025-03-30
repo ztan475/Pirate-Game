@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Base : MonoBehaviour
 {
+    public GameObject healthText;
+
     [SerializeField] protected int health;
     [SerializeField] protected GameObject defeatScreen;
     public int Health => health;
@@ -18,7 +21,7 @@ public class Base : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        healthText.GetComponent<TextMeshProUGUI>().text = "HP: " + health.ToString();
     }
 
     public void TakeDamage(int damage)
