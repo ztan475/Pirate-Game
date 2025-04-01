@@ -9,6 +9,7 @@ TagManager:
   - Ally
   - Gold
   - PlayerBase
+  - CurrencySystem
   layers:
   - Default
   - TransparentFX
