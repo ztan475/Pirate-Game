@@ -72,7 +72,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 8f04f4d73d061d14e88b213d82a8065b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerStats: {fileID: 11400000, guid: ff38ff1c789d9474f98c402a60f6f07b, type: 2}
   projectileSpawnPoint: {fileID: 1302979564359471673}
-  sellCost: 0
+  sellCost: 50
 --- !u!58 &8195541254592813652
 CircleCollider2D:
   m_ObjectHideFlags: 0
