@@ -76,8 +76,11 @@ public class Projectile : MonoBehaviour
     {
         if (collision.gameObject == enemyTarget.gameObject)
         {
-            enemyTarget.TakeDamage(projectileStats.damage);
-            
+            if (enemyTarget.type != UnitType.Shielder)
+            {
+                enemyTarget.TakeDamage(projectileStats.damage);
+            }
+                
             Destroy(gameObject);
         }
     }*/

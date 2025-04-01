@@ -50,6 +50,9 @@ public class Unit : MonoBehaviour
         transform.rotation = Quaternion.identity; // Necessary because of nav mesh being dumb.
         GameObject[] gameObjects = GameObject.FindGameObjectsWithTag(targetTag);
         GameObject targetObject = null;
+
+        
+
         foreach (GameObject gameObject in gameObjects)
         {
             if (targetObject == null)
@@ -78,6 +81,19 @@ public class Unit : MonoBehaviour
             agent.ResetPath();
             anim.SetBool("isWalking", false);
         }
+
+        // Cart behaviour
+        if (gameObject.name.Contains("Cart"))
+    {
+        GameObject playerBase = GameObject.Find("playerBase");
+        if (playerBase != null)
+        {
+            currentTarget = playerBase;
+            agent.SetDestination(playerBase.transform.position);
+            anim.SetBool("isWalking", true);
+        }
+        return;
+    }
     }
 
     public void UnitDetected(string collisionTag)
