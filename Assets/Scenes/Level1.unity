@@ -6137,7 +6137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingGold: 200
-  goldText: {fileID: 0}
+  goldText: {fileID: 330071324}
 --- !u!4 &1812762617
 Transform:
   m_ObjectHideFlags: 0
