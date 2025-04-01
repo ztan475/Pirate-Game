@@ -36,7 +36,7 @@ public class Unit : MonoBehaviour
     public float MoveSpeed => moveSpeed;
     public int Attack => attack;
     public int Health => health;
-    
+
 
     // Function used to initialize components needed for unit functionality.
     protected void Init()
@@ -47,8 +47,9 @@ public class Unit : MonoBehaviour
         anim.SetBool("isWalking", false);
         anim.SetBool("isAttacking", false);
         anim.SetBool("isDead", false);
-        attackAudioSource = GetComponents<AudioSource>()[1];
-
+        if (this.type == UnitType.Melee) {
+            attackAudioSource = GetComponents<AudioSource>()[1];
+        }
     }
 
     // Check if there are any targets in the scene.

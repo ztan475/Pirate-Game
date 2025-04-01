@@ -26,7 +26,7 @@ public class EnemyAttackSchedule2 : MonoBehaviour
         {
             spawner.spawnMeleeEnemyUnit();
             spawner.spawnMeleeEnemyUnit();
-            spawner.spawnRangedAllyUnit();
+            spawner.spawnRangedEnemyUnit();
 
             spawner.spawnMeleeEnemyUnit2();
             spawner.spawnMeleeEnemyUnit2();
