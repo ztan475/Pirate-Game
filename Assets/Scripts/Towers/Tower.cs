@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] private TowerStats towerStats;
     [SerializeField] private GameObject projectileSpawnPoint;
+    private AudioSource attackAudioSource;
 
     private float reloadTime;
     private int health;
@@ -31,6 +32,7 @@ public class Tower : MonoBehaviour
         sellCost = towerStats.sellCost;
         upgradeCost = towerStats.upgradeCost;
         projectileDamage = towerStats.projectileDamage;
+        attackAudioSource = GetComponents<AudioSource>()[0];
     }
 
     // Update is called once per frame
@@ -74,6 +76,7 @@ public class Tower : MonoBehaviour
     {    
         if(currentEnemy != null && canShoot)
         {
+            attackAudioSource.PlayOneShot(attackAudioSource.clip);
             Debug.Log("Attempting Shot");
             GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, Quaternion.identity);
             SetDamage(projectile);

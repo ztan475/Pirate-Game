@@ -180,6 +180,7 @@ public class Unit : MonoBehaviour
             }
             else if (this.type == UnitType.Ranged)
             {
+                attackAudioSource.PlayOneShot(attackAudioSource.clip);
                 RangedAttack();
             }
             else if (this.type == UnitType.Cart)
