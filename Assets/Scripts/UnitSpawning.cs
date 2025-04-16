@@ -11,6 +11,7 @@ public class UnitSpawning : MonoBehaviour
     [Header("Unit Prefabs")]
     [SerializeField] private GameObject allyPrefab;
     [SerializeField] private GameObject allyRangedPrefab;
+    [SerializeField] private GameObject allyShielderPrefab;
     [SerializeField] private GameObject enemyMeleePrefab;
     [SerializeField] private GameObject enemyRangedPrefab;
     [SerializeField] private GameObject enemyShielderPrefab;
@@ -19,6 +20,7 @@ public class UnitSpawning : MonoBehaviour
     [Header("Spawn Location")]
     [SerializeField] private GameObject allySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint;
+    [SerializeField] private GameObject enemySpawnPoint2;
 
     private CurrencySystem currencySystem;
 
@@ -54,6 +56,26 @@ public class UnitSpawning : MonoBehaviour
         Instantiate(enemyCartPrefab, enemySpawnPoint.transform.position, Quaternion.identity);
     }
 
+    public void spawnMeleeEnemyUnit2()
+    {
+        Instantiate(enemyMeleePrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
+    public void spawnRangedEnemyUnit2()
+    {
+        Instantiate(enemyRangedPrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
+    public void spawnShielderEnemyUnit2()
+    {
+        Instantiate(enemyShielderPrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
+    public void spawnCartEnemyUnit2()
+    {
+        Instantiate(enemyCartPrefab, enemySpawnPoint2.transform.position, Quaternion.identity);
+    }
+
     public void spawnMeleeAllyUnit()
     {
         if (currencySystem.CheckGold() >= 10)
@@ -69,6 +91,15 @@ public class UnitSpawning : MonoBehaviour
         {
             Instantiate(allyRangedPrefab, allySpawnPoint.transform.position, Quaternion.identity);
             currencySystem.RemoveCoins(15);
+        }
+    }
+
+    public void spawnShielderAllyUnit()
+    {
+        if (currencySystem.CheckGold() >= 20)
+        {
+            Instantiate(allyShielderPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            currencySystem.RemoveCoins(20);
         }
     }
 }

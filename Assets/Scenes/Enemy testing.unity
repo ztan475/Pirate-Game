@@ -587,10 +587,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74dd8823ac5084e42843d4bd872c1913, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnAlly: {fileID: 1907565955}
-  spawnEnemy: {fileID: 1635153537}
+  goldObject: {fileID: 0}
   allyPrefab: {fileID: 5564182128829787909, guid: 5bb11fed904d942ae8b1ceb32b646ba2, type: 3}
-  enemyPrefab: {fileID: 4430212057693561320, guid: b05e74db2fdb44719a3a073ef2d0fcad, type: 3}
+  allyRangedPrefab: {fileID: 0}
+  enemyMeleePrefab: {fileID: 0}
+  enemyRangedPrefab: {fileID: 0}
+  enemyShielderPrefab: {fileID: 0}
+  enemyCartPrefab: {fileID: 0}
   allySpawnPoint: {fileID: 1987042773}
   enemySpawnPoint: {fileID: 1111830563}
 --- !u!4 &1365993209

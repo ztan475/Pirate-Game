@@ -6,6 +6,7 @@ public class CannonOnHit : MonoBehaviour
 {
     [SerializeField] private ProjectileStats projectileStats;
     public int damage;
+    private AudioSource explosionAudioSource;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -24,7 +25,8 @@ public class CannonOnHit : MonoBehaviour
     {
         GameObject explosion = Instantiate(projectileStats.projectileOnHit, transform.position, Quaternion.identity);
         gameObject.GetComponent<CircleCollider2D>().radius *= 10;
-
+        explosionAudioSource = GetComponents<AudioSource>()[0];
+        explosionAudioSource.PlayOneShot(explosionAudioSource.clip);
         Collider2D[] colliders = Physics2D.OverlapCircleAll(gameObject.GetComponent<CircleCollider2D>().bounds.center, gameObject.GetComponent<CircleCollider2D>().radius, LayerMask.GetMask("Enemy"));
         Debug.Log(colliders.Length);
         foreach (var enemy in colliders) {
