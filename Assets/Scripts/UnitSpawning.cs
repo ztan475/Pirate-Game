@@ -19,8 +19,10 @@ public class UnitSpawning : MonoBehaviour
 
     [Header("Spawn Location")]
     [SerializeField] private GameObject allySpawnPoint;
+    [SerializeField] private GameObject allySpawnPoint2;
     [SerializeField] private GameObject enemySpawnPoint;
     [SerializeField] private GameObject enemySpawnPoint2;
+    private bool useSecondAllySpawn = false;
 
     private CurrencySystem currencySystem;
 
@@ -80,7 +82,7 @@ public class UnitSpawning : MonoBehaviour
     {
         if (currencySystem.CheckGold() >= 10)
         {
-            Instantiate(allyPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            Instantiate(allyPrefab, GetAllySpawnPoint().position, Quaternion.identity);
             currencySystem.RemoveCoins(10);
         }
     }
@@ -89,7 +91,7 @@ public class UnitSpawning : MonoBehaviour
     {
         if (currencySystem.CheckGold() >= 15)
         {
-            Instantiate(allyRangedPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            Instantiate(allyRangedPrefab, GetAllySpawnPoint().position, Quaternion.identity);
             currencySystem.RemoveCoins(15);
         }
     }
@@ -98,8 +100,24 @@ public class UnitSpawning : MonoBehaviour
     {
         if (currencySystem.CheckGold() >= 20)
         {
-            Instantiate(allyShielderPrefab, allySpawnPoint.transform.position, Quaternion.identity);
+            Instantiate(allyShielderPrefab, GetAllySpawnPoint().position, Quaternion.identity);
             currencySystem.RemoveCoins(20);
         }
     }
+    public void ToggleAllySpawnPoint()
+    {
+        useSecondAllySpawn = !useSecondAllySpawn;
+        Debug.Log("Switched Spawn Point.");
+    }
+
+    private Transform GetAllySpawnPoint()
+    {
+        if (useSecondAllySpawn && allySpawnPoint2 != null)
+        {
+            return allySpawnPoint2.transform;
+            Debug.Log("This code never executes.");
+        }
+        return allySpawnPoint.transform;
+    }
+
 }
