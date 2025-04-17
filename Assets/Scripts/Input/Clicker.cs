@@ -11,20 +11,26 @@ public class Clicker : MonoBehaviour
         {
             Vector3 mousePosition = mouse.position.ReadValue();
             Ray ray = m_Camera.ScreenPointToRay(mousePosition);
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            // RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
+            RaycastHit2D[] hit2 = Physics2D.RaycastAll(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
 
-            if(hit.collider != null)
+            foreach(RaycastHit2D unit in hit2)
             {
-                if (hit.collider.transform.tag == "Node")
+                if (unit.collider != null)
                 {
-                    // hit.transform.GetComponent<Node>().Test();
-                    hit.transform.GetComponent<Node>().OpenShop();
-                }
-                else
-                {
-                    Debug.Log(hit.transform.tag);
+                    if (unit.collider.transform.tag == "Node")
+                    {
+                        // hit.transform.GetComponent<Node>().Test();
+                        UIManager.Instance.CloseShop();
+                        unit.transform.GetComponent<Node>().OpenShop();
+                    }
+                    else
+                    {
+                        Debug.Log(unit.transform.tag);
+                    }
                 }
             }
+            
             
             
         }

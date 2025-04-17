@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileStats: {fileID: 11400000, guid: a130407376070d048b2dde9b9f4a3267, type: 2}
-  duration: 10
-  slowAmount: 0
+  duration: 4
+  slowAmount: 0.1
 --- !u!61 &-8009958588507611334
 BoxCollider2D:
   m_ObjectHideFlags: 0

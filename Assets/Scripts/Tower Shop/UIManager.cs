@@ -55,7 +55,14 @@ public class UIManager : MonoBehaviour
 
     public void CloseShop()
     {
-        currentNode.shopUI.SetActive(false);
+        if (currentNode != null)
+        {
+            if(currentNode.shopUI.activeSelf == true)
+            {
+                currentNode.shopUI.SetActive(false);
+            }
+        }
+        
         // shopUI.SetActive(false);
     }
 }

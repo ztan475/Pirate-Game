@@ -15,7 +15,7 @@ MonoBehaviour:
   projectileVelocity: 10
   damage: 30
   projectileOnHit: {fileID: 1162736364561434988, guid: 1905f57e690fbaf478513937997d243b, type: 3}
-  radius: 3
+  radius: 10
   targetLayer:
     serializedVersion: 2
     m_Bits: 64
