@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4169234602126773380}
   - component: {fileID: -7176018485625936486}
   - component: {fileID: 317675602270409246}
+  - component: {fileID: -3784237159976079820}
   m_Layer: 0
   m_Name: RangedAlly
   m_TagString: Ally
@@ -313,7 +314,7 @@ MonoBehaviour:
   meleeAttackHitbox: {fileID: 4625673485556481858, guid: fb299fa5d8f8f40499d8ecb8b6f21b6d, type: 3}
   projectile: {fileID: 5801246956048828501, guid: 7f6d23ca3f6b6458f9b71995af8fee76, type: 3}
   moveSpeed: 5
-  attack: 20
+  attack: 40
   health: 50
   attackSpeed: 1
   defense: 0
@@ -510,3 +511,15 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-3784237159976079820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5564182128829787909}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecfdf6becc04a34299ade4ad3be9b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

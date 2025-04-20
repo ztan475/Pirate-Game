@@ -30,8 +30,14 @@ public class Base : MonoBehaviour
         Debug.Log(damage + " damage dealt to tower. " + health + " health remaining");
         if (health <= 0)
         {
+            if(gameObject.name!="EnemyBase 2"){
+                CurrencySystem.totalGoldPublic=0;
             defeatScreen.SetActive(true);
             Time.timeScale = 0;
+            }
+             if(gameObject.name=="EnemyBase 2"){
+                 transform.position=new Vector3(transform.position.x+50,0,0);
+            }
         }
     }
 }
