@@ -4492,7 +4492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 1197499139}
   health: 2000
-  defeatScreen: {fileID: 0}
+  defeatScreen: {fileID: 1261866139}
 --- !u!61 &895759227
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -6917,6 +6917,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17228df5fa19354498b530f8fcbd260e, type: 3}
+--- !u!1 &1261866139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3448648091723716576, guid: 17228df5fa19354498b530f8fcbd260e, type: 3}
+  m_PrefabInstance: {fileID: 1261866138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1265684943 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3339287326841458237, guid: c3ba58d7c965a7d4cb1de092b659b714, type: 3}
@@ -8061,7 +8066,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 642685707}
   health: 2000
-  defeatScreen: {fileID: 0}
+  defeatScreen: {fileID: 1261866139}
 --- !u!212 &1493919546
 SpriteRenderer:
   m_ObjectHideFlags: 0

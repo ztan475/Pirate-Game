@@ -6,7 +6,7 @@ public class unitMaxLimit : MonoBehaviour
 {
 
    public static int maxTroops = 0;
-   int maximum =7;
+   int maximum =9;
    private bool deletedTroop=false;
     // Start is called before the first frame update
     void Start()
