@@ -50,6 +50,9 @@ public class Unit : MonoBehaviour
         if (this.type == UnitType.Melee) {
             attackAudioSource = GetComponents<AudioSource>()[1];
         }
+        if (this.type == UnitType.Ranged) {
+            attackAudioSource = GetComponents<AudioSource>()[1];
+        }
     }
 
     // Check if there are any targets in the scene.

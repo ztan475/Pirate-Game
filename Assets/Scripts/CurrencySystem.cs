@@ -7,7 +7,8 @@ public class CurrencySystem : MonoBehaviour
 {
     public static CurrencySystem Instance;
     [SerializeField] private int startingGold;
-    private int totalGold;
+    public int totalGold;
+    public static int totalGoldPublic;
     public GameObject goldText;
 
     private void Awake()
@@ -24,11 +25,14 @@ public class CurrencySystem : MonoBehaviour
 
     private void Start()
     {
+       
         totalGold = startingGold;
+         totalGoldPublic=totalGold;
     }
 
     private void Update()
     {
+        totalGold=totalGoldPublic;
         if (goldText != null)
         {
             goldText.GetComponentInChildren<TextMeshProUGUI>().SetText($"Gold:{totalGold}");
@@ -38,11 +42,15 @@ public class CurrencySystem : MonoBehaviour
     public void AddCoins(int amount)
     {
         totalGold += amount;
+        totalGoldPublic = totalGold;
+        
     }
 
     public void RemoveCoins(int amount)
     {
         totalGold -= amount;
+         totalGoldPublic = totalGold;
+         
     }
 
     public int CheckGold()

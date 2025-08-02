@@ -19,6 +19,7 @@ public class Tower : MonoBehaviour
     private ArrayList enemyList = new ArrayList();
     private Unit currentEnemy;
     private bool canShoot;
+    public Animator CannonFire;
     
 
     private void Start()
@@ -33,6 +34,7 @@ public class Tower : MonoBehaviour
         upgradeCost = towerStats.upgradeCost;
         projectileDamage = towerStats.projectileDamage;
         attackAudioSource = GetComponents<AudioSource>()[0];
+        CannonFire = transform.Find("CannonFire").GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -80,6 +82,7 @@ public class Tower : MonoBehaviour
             Debug.Log("Attempting Shot");
             GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.transform.position, Quaternion.identity);
             SetDamage(projectile);
+            CannonFire.SetTrigger("CannonFire");
             Projectile projectileInstance = projectile.GetComponent<Projectile>();
             projectileInstance.SetEnemy(currentEnemy);
             projectileInstance.SetTower(this);
@@ -96,6 +99,7 @@ public class Tower : MonoBehaviour
                 break;
             case TowerType.Cannon:
                 projectile.GetComponent<CannonOnHit>().damage = projectileDamage;
+                CannonFire.SetTrigger("CannonFire");
                 break;
             case TowerType.Goo:
                 projectile.GetComponent<GooOnHit>().damage = projectileDamage;

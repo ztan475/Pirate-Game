@@ -31,7 +31,7 @@ public class EnemyAttackSchedule2 : MonoBehaviour
             spawner.spawnMeleeEnemyUnit2();
             spawner.spawnMeleeEnemyUnit2();
             spawner.spawnRangedEnemyUnit2();
-            yield return new WaitForSeconds(40);
+            yield return new WaitForSeconds(10);
         }
     }
 }
